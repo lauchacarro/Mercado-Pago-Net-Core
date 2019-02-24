@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Migración del SDK de Mercado Pago (Version 1.0.54) a Net Core 2.1</Description>
+    <PackageLicenseUrl>https://github.com/lauchacarro/Mercado-Pago-Net-Core/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/lauchacarro/Mercado-Pago-Net-Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lauchacarro/Mercado-Pago-Net-Core</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Cache\CacheEntidades.cs" />
+    <Compile Remove="Cache\ListCacheEntidad.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+</Project>
