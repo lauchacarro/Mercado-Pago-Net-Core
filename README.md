@@ -1,5 +1,5 @@
 # Mercado-Pago-Net-Core
-Migración del SDK de Mercado Pago de NetFramework 3.5 a NetCore 2.1
+Migration from Mercado Pago SDK from Net Framework 3.5 to NetCore 2.1
 
 ## Installation 
 
