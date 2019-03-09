@@ -13,87 +13,83 @@ namespace MercadoPago
 {
   public class SDK
   {
-    private static string UserToken = (string) null;
-    public static string RefreshToken = (string) null;
-    private static string _clientSecret = (string) null;
-    private static string _clientId = (string) null;
-    private static string _accessToken = (string) null;
-    private static string _appId = (string) null;
-    private static string _baseUrl = "https://api.mercadopago.com";
+    private  string UserToken = (string) null;
+    public  string RefreshToken = (string) null;
+    private  string _clientSecret = (string) null;
+    private  string _clientId = (string) null;
+    private  string _accessToken = (string) null;
+    private  string _appId = (string) null;
+    private  string _baseUrl = "https://api.mercadopago.com";
     private const string DEFAULT_BASE_URL = "https://api.mercadopago.com";
 
-    public static string ClientSecret
+    public  string ClientSecret
     {
       get
       {
-        return SDK._clientSecret;
+        return this._clientSecret;
       }
       set
       {
-        if (!string.IsNullOrEmpty(SDK._clientSecret))
-          throw new MPConfException("clientSecret setting can not be changed");
-        SDK._clientSecret = value;
+
+                this._clientSecret = value;
       }
     }
 
-    public static string ClientId
+    public  string ClientId
     {
       get
       {
-        return SDK._clientId;
+        return this._clientId;
       }
       set
       {
-        if (!string.IsNullOrEmpty(SDK._clientId))
-          throw new MPConfException("clientId setting can not be changed");
-        SDK._clientId = value;
+
+                this._clientId = value;
       }
     }
 
-    public static string AccessToken
+    public  string AccessToken
     {
       get
       {
-        return SDK._accessToken;
+        return this._accessToken;
       }
       set
       {
-        if (!string.IsNullOrEmpty(SDK._accessToken))
-          throw new MPConfException("accessToken setting can not be changed");
-        SDK._accessToken = value;
+
+                this._accessToken = value;
       }
     }
 
-    public static string AppId
+    public  string AppId
     {
       get
       {
-        return SDK._appId;
+        return this._appId;
       }
       set
       {
-        if (!string.IsNullOrEmpty(SDK._appId))
-          throw new MPConfException("appId setting can not be changed");
-        SDK._appId = value;
+
+                this._appId = value;
       }
     }
 
-    public static string BaseUrl
+    public  string BaseUrl
     {
       get
       {
-        return SDK._baseUrl;
+        return this._baseUrl;
       }
     }
 
-    public static void SetConfiguration(IDictionary<string, string> configurationParams)
+    public  void SetConfiguration(IDictionary<string, string> configurationParams)
     {
       if (configurationParams == null)
         throw new ArgumentException("Invalid configurationParams parameter");
-      configurationParams.TryGetValue("clientSecret", out SDK._clientSecret);
-      configurationParams.TryGetValue("clientId", out SDK._clientId);
-      configurationParams.TryGetValue("accessToken", out SDK._accessToken);
-      configurationParams.TryGetValue("appId", out SDK._appId);
+      configurationParams.TryGetValue("clientSecret", out this._clientSecret);
+      configurationParams.TryGetValue("clientId", out this._clientId);
+      configurationParams.TryGetValue("accessToken", out this._accessToken);
+      configurationParams.TryGetValue("appId", out this._appId);
     }
 
     //public static void SetConfiguration(System.Configuration.Configuration config)
@@ -106,18 +102,18 @@ namespace MercadoPago
     //  SDK._appId = SDK.GetConfigValue(config, "AppId");
     //}
 
-    public static void CleanConfiguration()
+    public  void CleanConfiguration()
     {
-      SDK._clientSecret = (string) null;
-      SDK._clientId = (string) null;
-      SDK._accessToken = (string) null;
-      SDK._appId = (string) null;
-      SDK._baseUrl = "https://api.mercadopago.com";
+            this._clientSecret = (string) null;
+            this._clientId = (string) null;
+            this._accessToken = (string) null;
+            this._appId = (string) null;
+            this._baseUrl = "https://api.mercadopago.com";
     }
 
-    public static void SetBaseUrl(string baseUrl)
+    public  void SetBaseUrl(string baseUrl)
     {
-      SDK._baseUrl = baseUrl;
+            this._baseUrl = baseUrl;
     }
 
     //private static string GetConfigValue(System.Configuration.Configuration config, string key)
@@ -129,38 +125,38 @@ namespace MercadoPago
     //  return str;
     //}
 
-    public static string GetAccessToken()
+    public  string GetAccessToken()
     {
-      if (string.IsNullOrEmpty(SDK.AccessToken))
-        SDK.AccessToken = MPCredentials.GetAccessToken();
-      return SDK.AccessToken;
+      if (string.IsNullOrEmpty(this.AccessToken))
+                this.AccessToken = MPCredentials.GetAccessToken(this);
+      return this.AccessToken;
     }
 
-    public static void SetAccessToken(string accessToken)
+    public  void SetAccessToken(string accessToken)
     {
-      if (!string.IsNullOrEmpty(SDK.AccessToken))
+      if (!string.IsNullOrEmpty(this.AccessToken))
         throw new MPException("Access_Token setting cannot be changed.");
-      SDK.AccessToken = accessToken;
+            this.AccessToken = accessToken;
     }
 
-    public static string GetUserToken()
+    public  string GetUserToken()
     {
-      return SDK.UserToken;
+      return this.UserToken;
     }
 
-    public static JToken Get(string uri)
+    public  JToken Get(string uri)
     {
-      return new MPRESTClient().ExecuteGenericRequest(HttpMethod.GET, uri, PayloadType.JSON, (JObject) null);
+      return new MPRESTClient().ExecuteGenericRequest(HttpMethod.GET, uri, PayloadType.JSON, (JObject) null, this);
     }
 
-    public static JToken Post(string uri, JObject payload)
+    public  JToken Post(string uri, JObject payload)
     {
-      return new MPRESTClient().ExecuteGenericRequest(HttpMethod.POST, uri, PayloadType.JSON, payload);
+      return new MPRESTClient().ExecuteGenericRequest(HttpMethod.POST, uri, PayloadType.JSON, payload, this);
     }
 
-    public static JToken Put(string uri, JObject payload)
+    public  JToken Put(string uri, JObject payload)
     {
-      return new MPRESTClient().ExecuteGenericRequest(HttpMethod.PUT, uri, PayloadType.JSON, payload);
+      return new MPRESTClient().ExecuteGenericRequest(HttpMethod.PUT, uri, PayloadType.JSON, payload, this);
     }
   }
 }

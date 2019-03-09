@@ -36,10 +36,10 @@ namespace MercadoPago
       HttpMethod httpMethod,
       string path,
       PayloadType payloadType,
-      JObject payload)
+      JObject payload, SDK sdk)
     {
-      if (SDK.GetAccessToken() != null)
-        path = SDK.BaseUrl + path + "?access_token=" + SDK.GetAccessToken();
+      if (sdk.GetAccessToken() != null)
+        path = sdk.BaseUrl + path + "?access_token=" + sdk.GetAccessToken();
       MPRequest request = this.CreateRequest(httpMethod, path, payloadType, payload, (WebHeaderCollection) null, 0, 0);
       if (((IEnumerable<HttpMethod>) new HttpMethod[2]
       {

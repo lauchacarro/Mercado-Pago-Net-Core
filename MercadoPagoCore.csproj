@@ -1,12 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>Migración del SDK de Mercado Pago (Version 1.0.54) a Net Core 2.1</Description>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Description>Migración del SDK de Mercado Pago (Version 1.0.54) a Net Core 2.1
+</Description>
     <PackageLicenseUrl>https://github.com/lauchacarro/Mercado-Pago-Net-Core/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/lauchacarro/Mercado-Pago-Net-Core</PackageProjectUrl>
     <RepositoryUrl>https://github.com/lauchacarro/Mercado-Pago-Net-Core</RepositoryUrl>
+    <Authors>Lautaro Carro</Authors>
+    <Company>Lautaro Carro</Company>
+    <PackageId>MercadoPagoNetCore</PackageId>
+    <Product>MercadoPago NetCore</Product>
+    <Version>1.0.10</Version>
+    <PackageReleaseNotes>Se arregló Bug causado por el uso de Reflexion</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

@@ -31,49 +31,54 @@ namespace MercadoPago
     private JObject _metadata;
     private string _default_card;
     private bool? _live_mode;
+      
+        public Customer(SDK sdk) : base(sdk)
+        {
+            
+        }
 
-    [GETEndpoint("/v1/customers/search")]
-    public static List<MercadoPago.Customer> Search(Dictionary<string, string> filters)
+        [GETEndpoint("/v1/customers/search")]
+    public static List<MercadoPago.Customer> Search(Dictionary<string, string> filters, SDK sdk)
     {
-      return MercadoPago.Customer.Search(filters, MPBase.WITHOUT_CACHE);
+      return MercadoPago.Customer.Search(filters, MPBase.WITHOUT_CACHE, sdk);
     }
 
     [GETEndpoint("/v1/customers/search")]
     public static List<MercadoPago.Customer> Search(
       Dictionary<string, string> filters,
-      bool useCache)
+      bool useCache, SDK sdk)
     {
-      return MPBase.ProcessMethodBulk<MercadoPago.Customer>(typeof (MercadoPago.Customer), nameof (Search), filters, useCache);
+      return MPBase.ProcessMethodBulk<MercadoPago.Customer>(typeof (MercadoPago.Customer), nameof (Search), filters, useCache, sdk);
     }
 
     [GETEndpoint("/v1/customers/:id")]
-    public static MercadoPago.Customer FindById(string id, bool useCache)
+    public static MercadoPago.Customer FindById(string id, bool useCache, SDK sdk)
     {
-      return (MercadoPago.Customer) MPBase.ProcessMethod<MercadoPago.Customer>(nameof (FindById), id, useCache);
+      return (MercadoPago.Customer) MPBase.ProcessMethod<MercadoPago.Customer>(nameof (FindById), id, useCache, sdk);
     }
 
     [GETEndpoint("/v1/customers/:id")]
-    public static MercadoPago.Customer FindById(string id)
+    public static MercadoPago.Customer FindById(string id, SDK sdk)
     {
-      return MercadoPago.Customer.FindById(id, MPBase.WITHOUT_CACHE);
+      return MercadoPago.Customer.FindById(id, MPBase.WITHOUT_CACHE, sdk);
     }
 
     [POSTEndpoint("/v1/customers")]
-    public MercadoPago.Customer Save()
+    public MercadoPago.Customer Save(SDK sdk)
     {
-      return (MercadoPago.Customer) this.ProcessMethod<MercadoPago.Customer>(nameof (Save), MPBase.WITHOUT_CACHE);
+      return (MercadoPago.Customer) this.ProcessMethod<MercadoPago.Customer>(nameof (Save), MPBase.WITHOUT_CACHE, sdk);
     }
 
     [PUTEndpoint("/v1/customers/:id")]
-    public MercadoPago.Customer Update()
+    public MercadoPago.Customer Update(SDK sdk)
     {
-      return (MercadoPago.Customer) this.ProcessMethod<MercadoPago.Customer>(nameof (Update), MPBase.WITHOUT_CACHE);
+      return (MercadoPago.Customer) this.ProcessMethod<MercadoPago.Customer>(nameof (Update), MPBase.WITHOUT_CACHE, sdk);
     }
 
     [DELETEEndpoint("/v1/customers/:id")]
-    public MercadoPago.Customer Delete()
+    public MercadoPago.Customer Delete(SDK sdk)
     {
-      return (MercadoPago.Customer) this.ProcessMethod<MercadoPago.Customer>(nameof (Delete), MPBase.WITHOUT_CACHE);
+      return (MercadoPago.Customer) this.ProcessMethod<MercadoPago.Customer>(nameof (Delete), MPBase.WITHOUT_CACHE, sdk);
     }
 
     public string Id
