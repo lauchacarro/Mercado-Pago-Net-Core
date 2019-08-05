@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Description>Migración del SDK de Mercado Pago (Version 1.0.54) a Net Core 2.1
+    <Description>Migración del SDK de Mercado Pago (Version 1.0.54) a Net Core 2.2
 </Description>
     <PackageLicenseUrl>https://github.com/lauchacarro/Mercado-Pago-Net-Core/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/lauchacarro/Mercado-Pago-Net-Core</PackageProjectUrl>
