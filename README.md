@@ -41,21 +41,22 @@ sdk.ClientSecret = "YOUR_CLIENT_SECRET";
 
 // Create a preference object
 Preference preference = new Preference(sdk); 
-# Adding an item object
+#region Adding an item object
 preference.Items.Add(
   new Item()
   {
     Id = "1234",
     Title = "Synergistic Cotton Watch", 
     Quantity = 5,
-    CurrencyId = "ARS",
-    UnitPrice = (float)23.25
+    CurrencyId = MercadoPago.Common.CurrencyId.ARS,
+    UnitPrice = (decimal)23.25
   }
 );
+#endregion
 // Setting a payer object as value for Payer property
 preference.Payer = new Payer(){
   Email = "willa@yahoo.com"
-}
+};
 // Save and posting preference
 preference.Save();
 ```
@@ -77,7 +78,7 @@ sdk.AccessToken = "YOUR_ACCESS_TOKEN";
 Payment payment = new Payment(sdk)
 {
     TransactionAmount = (float)100.0,
-    Token = "YOUR_CARD_TOKEN"
+    Token = "YOUR_CARD_TOKEN",
     Description = "Ergonomic Silk Shirt",
     PaymentMethodId = "visa", 
     Installments = 1,
